@@ -1,0 +1,29 @@
+{
+  "name": "webRTC",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hatn207/webrtc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hatn207/webrtc/issues"
+  },
+  "homepage": "https://github.com/hatn207/webrtc#readme",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "peerjs": "^0.3.16",
+    "uid": "0.0.2",
+    "webpack": "^4.16.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.0"
+  }
+}
