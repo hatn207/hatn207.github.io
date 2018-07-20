@@ -248,7 +248,7 @@ eval("/**\n * Export `uid`\n */\n\nmodule.exports = uid;\n\n/**\n * Create a `ui
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const Peer = __webpack_require__(/*! peerjs */ \"./node_modules/peerjs/lib/peer.js\");\r\nconst uid = __webpack_require__(/*! uid */ \"./node_modules/uid/index.js\");\r\nconst $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\r\nconst openStream = __webpack_require__(/*! ./openStream */ \"./src/openStream.js\");\r\nconst playVideo = __webpack_require__(/*! ./playVideo */ \"./src/playVideo.js\");\r\nconst getIceObject = __webpack_require__(/*! ./getIceObject */ \"./src/getIceObject.js\");\r\n\r\ngetIceObject(iceConfig => {\r\n    const connectionObj = {\r\n        host: 'gdit-steam.herokuapp.com',\r\n        port: 443,\r\n        secure: true,\r\n        key: 'peerjs',\r\n        config: iceConfig\r\n    };\r\n\r\n    const peer = new Peer(getPeer(), connectionObj);\r\n\r\n    $('#btnCall').click(() => {\r\n        const friendId = $('#txtFriendId').val();\r\n        openStream(stream => {\r\n            playVideo(stream, 'localStream');\r\n            const call = peer.call(friendId, stream);\r\n            call.on('stream', remoteStream => playVideo(remoteStream, 'friendStream'));\r\n        });\r\n    });\r\n\r\n    peer.on('call', call => {\r\n        openStream(stream => {\r\n            console.log('123123123')\r\n            playVideo(stream, 'localStream');\r\n            call.answer(stream);\r\n            call.on('stream', remoteStream => playVideo(remoteStream, 'friendStream'));\r\n        });\r\n    });\r\n\r\n});\r\n\r\nfunction getPeer() {\r\n    const id = uid(10);\r\n    $('#peer-id').append(id);\r\n    return id;\r\n}\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("const Peer = __webpack_require__(/*! peerjs */ \"./node_modules/peerjs/lib/peer.js\");\nconst uid = __webpack_require__(/*! uid */ \"./node_modules/uid/index.js\");\nconst $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nconst openStream = __webpack_require__(/*! ./openStream */ \"./src/openStream.js\");\nconst playVideo = __webpack_require__(/*! ./playVideo */ \"./src/playVideo.js\");\nconst getIceObject = __webpack_require__(/*! ./getIceObject */ \"./src/getIceObject.js\");\n\ngetIceObject(iceConfig => {\n    const connectionObj = {\n        host: 'gdit-steam.herokuapp.com',\n        port: 443,\n        secure: true,\n        key: 'peerjs',\n        config: iceConfig\n    };\n\n    const peer = new Peer(getPeer(), connectionObj);\n\n    $('#btnCall').click(() => {\n        const friendId = $('#txtFriendId').val();\n        openStream(stream => {\n            playVideo(stream, 'localStream');\n            const call = peer.call(friendId, stream);\n            call.on('stream', remoteStream => playVideo(remoteStream, 'friendStream'));\n        });\n    });\n\n    peer.on('call', call => {\n        openStream(stream => {\n            console.log('123123123')\n            playVideo(stream, 'localStream');\n            call.answer(stream);\n            call.on('stream', remoteStream => playVideo(remoteStream, 'friendStream'));\n        });\n    });\n\n});\n\nfunction getPeer() {\n    const id = uid(10);\n    $('#peer-id').append(id);\n    return id;\n}\n\n//# sourceURL=webpack:///./src/app.js?");
 
 /***/ }),
 
@@ -259,7 +259,7 @@ eval("const Peer = __webpack_require__(/*! peerjs */ \"./node_modules/peerjs/lib
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\r\n\r\nfunction getIceObject(cb) {\r\n    $.ajax({\r\n        url: \"https://service.xirsys.com/ice\",\r\n        data: {\r\n            ident: \"hatran92\",\r\n            secret: \"f4e63042-8bd2-11e8-a73d-4792a42eb3fb\",\r\n            domain: \"hatn207.github.io\",\r\n            application: \"default\",\r\n            room: \"default\",\r\n            secure: 1\r\n        },\r\n        success: function (data, status) {\r\n            console.log(data.d);\r\n            // data.d is where the iceServers object lives\r\n            cb(data.d);\r\n        },\r\n    });\r\n}\r\n\r\nmodule.exports = getIceObject;\n\n//# sourceURL=webpack:///./src/getIceObject.js?");
+eval("const $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\nfunction getIceObject(cb) {\n    $.ajax({\n        url: \"https://service.xirsys.com/ice\",\n        data: {\n            ident: \"hatran92\",\n            secret: \"f4e63042-8bd2-11e8-a73d-4792a42eb3fb\",\n            domain: \"hatn207.github.io\",\n            application: \"default\",\n            room: \"default\",\n            secure: 1\n        },\n        success: function (data, status) {\n            // data.d is where the iceServers object lives\n            cb(data.d);\n        },\n    });\n}\n\nmodule.exports = getIceObject;\n\n//# sourceURL=webpack:///./src/getIceObject.js?");
 
 /***/ }),
 
@@ -270,7 +270,7 @@ eval("const $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/j
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const playVideo = __webpack_require__(/*! ./playVideo */ \"./src/playVideo.js\");\r\n\r\nfunction openStream(cb) {\r\n    navigator.mediaDevices.getUserMedia({ audio: false, video: true })\r\n        .then(stream => {\r\n            cb(stream);\r\n        })\r\n        .catch(err => console.log(err));\r\n}\r\n\r\nmodule.exports = openStream;\n\n//# sourceURL=webpack:///./src/openStream.js?");
+eval("const playVideo = __webpack_require__(/*! ./playVideo */ \"./src/playVideo.js\");\n\nfunction openStream(cb) {\n    navigator.mediaDevices.getUserMedia({ audio: false, video: true })\n        .then(stream => {\n            cb(stream);\n        })\n        .catch(err => console.log(err));\n}\n\nmodule.exports = openStream;\n\n//# sourceURL=webpack:///./src/openStream.js?");
 
 /***/ }),
 
@@ -281,7 +281,7 @@ eval("const playVideo = __webpack_require__(/*! ./playVideo */ \"./src/playVideo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function playVideo(stream, idVideo) {\r\n    const video = document.getElementById(idVideo);\r\n    video.srcObject = stream;\r\n    video.onloadedmetadata = function () {\r\n        video.play();\r\n    };\r\n}\r\n\r\nmodule.exports = playVideo;\n\n//# sourceURL=webpack:///./src/playVideo.js?");
+eval("function playVideo(stream, idVideo) {\n    const video = document.getElementById(idVideo);\n    video.srcObject = stream;\n    video.onloadedmetadata = function () {\n        video.play();\n    };\n}\n\nmodule.exports = playVideo;\n\n//# sourceURL=webpack:///./src/playVideo.js?");
 
 /***/ })
 
