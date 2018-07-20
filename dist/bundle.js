@@ -259,7 +259,7 @@ eval("const Peer = __webpack_require__(/*! peerjs */ \"./node_modules/peerjs/lib
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\r\n\r\nfunction getIceObject(cb) {\r\n    $.ajax({\r\n        url: \"https://service.xirsys.com/ice\",\r\n        data: {\r\n            ident: \"hatran92\",\r\n            secret: \"f4e63042-8bd2-11e8-a73d-4792a42eb3fb\",\r\n            domain: \"hatn207.github.io\",\r\n            application: \"default\",\r\n            room: \"default\",\r\n            secure: 1\r\n        },\r\n        success: function (data, status) {\r\n            console.log(data);\r\n            // data.d is where the iceServers object lives\r\n            cb(data.d);\r\n        },\r\n    });\r\n}\r\n\r\nmodule.exports = getIceObject;\n\n//# sourceURL=webpack:///./src/getIceObject.js?");
+eval("const $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\r\n\r\nfunction getIceObject(cb) {\r\n    $.ajax({\r\n        url: \"https://service.xirsys.com/ice\",\r\n        data: {\r\n            ident: \"hatran92\",\r\n            secret: \"f4e63042-8bd2-11e8-a73d-4792a42eb3fb\",\r\n            domain: \"hatn207.github.io\",\r\n            application: \"default\",\r\n            room: \"default\",\r\n            secure: 1\r\n        },\r\n        success: function (data, status) {\r\n            console.log(data.d);\r\n            // data.d is where the iceServers object lives\r\n            cb(data.d);\r\n        },\r\n    });\r\n}\r\n\r\nmodule.exports = getIceObject;\n\n//# sourceURL=webpack:///./src/getIceObject.js?");
 
 /***/ }),
 

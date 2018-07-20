@@ -12,7 +12,7 @@ function getIceObject(cb) {
             secure: 1
         },
         success: function (data, status) {
-            console.log(data);
+            console.log(data.d);
             // data.d is where the iceServers object lives
             cb(data.d);
         },
