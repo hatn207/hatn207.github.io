@@ -259,7 +259,7 @@ eval("const Peer = __webpack_require__(/*! peerjs */ \"./node_modules/peerjs/lib
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\nfunction getIceObject(cb) {\n    $.ajax({\n        url: \"https://service.xirsys.com/ice\",\n        data: {\n            ident: \"hatran92\",\n            secret: \"f4e63042-8bd2-11e8-a73d-4792a42eb3fb\",\n            domain: \"hatn207.github.io\",\n            application: \"default\",\n            room: \"default\",\n            secure: 1\n        },\n        success: function (data, status) {\n            // data.d is where the iceServers object lives\n            cb(data.d);\n        },\n    });\n}\n\nmodule.exports = getIceObject;\n\n//# sourceURL=webpack:///./src/getIceObject.js?");
+eval("const $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\nfunction getIceObject(cb) {\n    $.ajax({\n        url: \"https://global.xirsys.net\",\n        data: {\n            ident: \"hatran92\",\n            secret: \"f4e63042-8bd2-11e8-a73d-4792a42eb3fb\",\n            channel: \"hatn207.github.io\",\n            // domain: \"hatn207.github.io\",\n            // application: \"default\",\n            // room: \"default\",\n            secure: 1\n        },\n        success: function (data, status) {\n            // data.d is where the iceServers object lives\n            cb(data.d);\n        },\n    });\n}\n\nmodule.exports = getIceObject;\n\n//# sourceURL=webpack:///./src/getIceObject.js?");
 
 /***/ }),
 
