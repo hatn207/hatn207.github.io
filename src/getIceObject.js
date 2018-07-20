@@ -7,8 +7,8 @@ function getIceObject(cb) {
             ident: "hatran92",
             secret: "f4e63042-8bd2-11e8-a73d-4792a42eb3fb",
             domain: "hatn207.github.io",
-            application: "default",
-            room: "default",
+            // application: "default",
+            // room: "default",
             secure: 1
         },
         success: function (data, status) {
