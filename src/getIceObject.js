@@ -20,12 +20,12 @@ function getIceObject(cb) {
     $.ajax({
         url: "https://global.xirsys.net/_turn/hatn207.github.io/",
         type: "PUT",
-        async: false,
+        // async: false,
         headers: {
             "Authorization": "Basic " + btoa("hatran92:f4e63042-8bd2-11e8-a73d-4792a42eb3fb")
         },
         success: function (res) {
-            cb(data.d);
+            cb(res);
             console.log("ICE List: " + res.v.iceServers);
         }
     });
